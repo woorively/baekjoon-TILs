@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Main {
 	static int n, m;
 	static int[] arr;
-	static boolean[] selected;
 	
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
@@ -11,27 +10,27 @@ public class Main {
 		m = s.nextInt();
 		
 		arr = new int[m];
-		selected = new boolean[n+1];
 		
-		// 1부터 n까지의 자연수 중에서 중복 없이 m개를 고른 수열
-		// 오름차
+		// 1부터 뽑으므로 1
+		// 깊이는 0부터 
 		recur(1, 0);
 	}
 	
-	static void recur(int idx, int cnt) {
-		// 기저조건
-		if (cnt == m) {
-			for (int i=0; i<m; i++) {
-				System.out.print(arr[i]+ " ");
+	static void recur(int idx, int depth) {
+		if (depth == m) {
+			for (int num: arr) {
+				System.out.print(num + " ");
 			}
 			System.out.println();
 			return;
 		}
 		
-		
+		//idx부터 n까지의 수를 순차적으로 뽑음 
 		for (int i=idx; i<=n; i++) {
-			arr[cnt] = i;
-			recur(i+1, cnt+1);
+			// 해당깊이(인덱스)에 숫자를 계속 덮어써주기 
+			arr[depth] = i;
+			// 하나씩 올려가며 뽑고 깊이도 올려줌 
+			recur(i+1, depth+1);
 		}
 	}
 
