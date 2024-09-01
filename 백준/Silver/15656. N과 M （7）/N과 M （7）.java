@@ -1,11 +1,9 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 	static int n, m;
-	static int[] arr;
-	static ArrayList<Integer> result;
+	static int[] arr, result;
 	static StringBuilder sb;
 	
 	public static void main(String[] args) {
@@ -15,7 +13,7 @@ public class Main {
 		m = s.nextInt();
 		
 		arr = new int[n];
-		result = new ArrayList<>();
+		result = new int[m];
 		
 		for (int i=0; i<n; i++) {
 			arr[i] = s.nextInt();
@@ -37,9 +35,8 @@ public class Main {
 		
 		// 1부터 n까지 뽑는데,
 		for (int i=0; i<n; i++) {
-			result.add(arr[i]);
+			result[depth] = arr[i];
 			recur(depth+1);
-			result.remove(result.size()-1);
 		}
 	}
 
