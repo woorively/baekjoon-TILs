@@ -18,7 +18,7 @@ public class Solution {
 				arr[i] = sc.next().charAt(0);
 				sc.nextLine();
 			}
-			
+			// 루트부터 dfs
 			dfs(1);
 			System.out.println();	
 		}
@@ -26,6 +26,7 @@ public class Solution {
 	}
 	
 	static void dfs(int cur) {
+        // 현재 노트가 트리의 크기보다 크면 종료
 		if (cur > n) return;
 		
 		dfs(cur * 2);
