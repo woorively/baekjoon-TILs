@@ -14,7 +14,6 @@ public class Solution {
 			k = sc.nextInt();
 
 			map = new int[n][n];
-
 			for (int i = 0; i < n; i++) {
 				for (int j = 0; j < n; j++) {
 					map[i][j] = sc.nextInt();
@@ -22,43 +21,38 @@ public class Solution {
 			}
 
 			cnt = 0;
+			
 			// 가로 검사
 			for (int i = 0; i < n; i++) {
-				for (int j = 0; j <= n - k; j++) {
-					boolean flag = true;
-					
-					for (int p = 0; p < k; p++) {
-						if (map[i][j + p] == 0) {
-							flag = false;
-							break;
-						}
-					}
-					
-					if (flag && (j + k == n || map[i][j + k] == 0) && (j == 0 || map[i][j - 1] == 0)) {
-						cnt++;
+				int length = 0;
+				for (int j = 0; j < n; j++) {
+					if (map[i][j] == 1) {
+						length++;
+					} else {
+						if (length == k) cnt++;
+						length = 0;
 					}
 				}
+				if (length == k) cnt++; // 행 끝 처리
 			}
 
 			// 세로 검사
 			for (int j = 0; j < n; j++) {
-				for (int i = 0; i <= n - k; i++) {
-					boolean flag = true;
-
-					for (int p = 0; p < k; p++) {
-						if (map[i + p][j] == 0) {
-							flag = false;
-							break;
-						}
-					}
-
-					if (flag && (i + k == n || map[i + k][j] == 0) && (i == 0 || map[i - 1][j] == 0)) {
-						cnt++;
+				int length = 0;
+				for (int i = 0; i < n; i++) {
+					if (map[i][j] == 1) {
+						length++;
+					} else {
+						if (length == k) cnt++;
+						length = 0;
 					}
 				}
+				if (length == k) cnt++; // 열 끝 처리
 			}
 
 			System.out.println("#" + tc + " " + cnt);
 		}
+
+		sc.close();
 	}
 }
