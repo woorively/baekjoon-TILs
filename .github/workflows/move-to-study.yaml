@@ -29,8 +29,8 @@ jobs:
          rsync -av --exclude='.git' --exclude='.github' --exclude='aps-study-repo' ./ aps-study-repo/김햇빛/
          
          cd aps-study-repo
-         git config --global user.name “woorively”
-         git config --global user.email “woorively@gmail.com”
+         git config --global user.name "woorively"
+         git config --global user.email "woorively@gmail.com"
          
          echo "Git status:"
          git status
